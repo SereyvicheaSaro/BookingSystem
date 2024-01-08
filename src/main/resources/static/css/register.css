@@ -1,0 +1,71 @@
+.card{
+width: 380px;
+}
+
+.form {
+padding: 10px;
+height: 300px;
+}
+
+.form input {
+margin-bottom: 12px;
+border-radius: 3px;
+}
+
+.form input:focus {
+box-shadow: none;
+}
+
+.card .nav{
+justify-content: center;
+gap: 30px;
+font-size: 20px;
+font-family: "Inter, 'sans-serif'";
+text-transform: uppercase;
+}
+
+.card .nav .nav-item .active {
+border-top: 5px black solid;
+font-weight: bold;
+}
+
+.nav-item{
+background-color: white;
+}
+
+.card .tab-content .btn{
+width: 130px;
+margin: auto;
+font: 20px Jura;
+text-transform: uppercase;
+background-color: #000;
+}
+
+.card .register{
+padding-bottom: 100px;
+border-radius: 10px;
+}
+
+.card input{
+font-family: "Inter";
+font-weight: lighter;
+border: #000 1px solid;
+color: black;
+}
+
+.card .register input{
+border-radius: 5px;
+}
+
+.fade-in {
+animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}

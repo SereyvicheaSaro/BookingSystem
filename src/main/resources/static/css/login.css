@@ -1,62 +1,11 @@
-body {
-  background-color: #000;
-}
-
 .card{
   width: 380px;
-}
-.btr {
-  border-top-right-radius: 5px !important;
-}
-
-.btl {
-  border-top-left-radius: 5px !important;
-}
-
-.btn-dark {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-.btn-dark:hover {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-.nav-pills {
-  display: table !important;
-  width: 100%;
-}
-
-.nav-pills .nav-link {
-  border-radius: 0px;
-  border-bottom: 1px solid #0d6efd40;
-}
-
-.nav-item {
-  display: table-cell;
-  background: #0d6efd2e;
-}
-
-.form {
-  padding: 10px;
-  height: 300px;
-}
-
-.form input {
-  margin-bottom: 12px;
-  border-radius: 3px;
 }
 
 .form input:focus {
   box-shadow: none;
 }
 
-.form button {
-  margin-top: 20px;
-}
 .card .nav{
   justify-content: center;
   gap: 30px;
@@ -64,13 +13,16 @@ body {
   font-family: "Inter, 'sans-serif'";
   text-transform: uppercase;
 }
+
 .card .nav .nav-item .active {
   border-top: 5px black solid;
   font-weight: bold;
 }
+
 .nav-item{
   background-color: white;
 }
+
 .card .tab-content .btn{
   width: 130px;
   margin: auto;
@@ -78,20 +30,27 @@ body {
   text-transform: uppercase;
   background-color: #000;
 }
-.card .register{
-  padding-bottom: 100px;
-  border-radius: 10px;
-}
+
 .card input{
   font-family: "Inter";
   font-weight: lighter;
   border: #000 1px solid;
   color: black;
-  
 }
-.card .register input{
-  border-radius: 5px;
-}
+
 .card .login{
   height: 220px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
