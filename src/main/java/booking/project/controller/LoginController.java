@@ -1,4 +1,4 @@
-package booking.project;
+package booking.project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
     @GetMapping("/Login")
     public String test() {
-        return "Login";
+        return "User_Home";
     }
 }
