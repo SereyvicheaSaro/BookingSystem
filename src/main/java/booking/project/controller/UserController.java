@@ -24,16 +24,6 @@ public class UserController {
         return "Login";
     }
 
-    @GetMapping("/User_Home")
-        public String User_Home() {
-            return "User_Home";
-    }
-
-    @GetMapping("/Cinema")
-    public String Cinema() {
-        return "User_Cinema";
-    }
-
     @GetMapping("/logout")
     public String logout() {
         // Add your logout logic here if needed
@@ -68,7 +58,6 @@ public class UserController {
     public String Register() {
         return "Register";
     }
-    
 
     @PostMapping("/Register")
     public String register(HttpServletRequest request, Model model) {
@@ -109,7 +98,10 @@ public class UserController {
 
     @GetMapping("/Cinema")
     public String Cinema() {
-        return "User_Cinema";
+        return "UserCinema";
+    }
+    @GetMapping("/Food&Berverage")
+    public String FNB(){
+        return "FNB";
     }
 }
-

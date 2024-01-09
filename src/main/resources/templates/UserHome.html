@@ -127,20 +127,21 @@
     <div class="container mt-4 d-flex justify-content-center align-items-center">
       <div class="row">
           <!-- Use Thymeleaf iteration to generate cards -->
-          <th:block th:each="cardNum : ${#numbers.sequence(1, 8)}">
+          <th:block th:each="movie, iterStat : ${movieList}" th:if="${iterStat.index lt 8}">
               <div class="col-md-3 mb-4">
-                <a href="#" style="text-decoration: none;">
-                  <div class="card" style="width: 300px;">
-                    <img th:src="@{/images/endgame.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title m-auto">Endgame</h5>
-                    </div>
-                </div>
-                </a>
+                  <a href="#" style="text-decoration: none;">
+                      <div class="card" style="width: 300px;">
+                          <img th:src="@{/images/endgame.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
+                          <div class="card-body text-center">
+                              <p class="m-auto lead" th:text="${movie.releaseDate}"></p>
+                              <h4 class="card-title m-auto" th:text="${movie.title}"></h4>
+                          </div>
+                      </div>
+                  </a>
               </div>
           </th:block>
       </div>
-  </div>
+  </div>  
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
