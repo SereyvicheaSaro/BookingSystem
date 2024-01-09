@@ -17,12 +17,27 @@ public class UserController {
     // injects an instance of the UserService, allowing the services to be used
     @Autowired
     private UserService Uservice;
-
+    
     @GetMapping("/Login")
     public String Login() {
         return "Login";
     }
 
+    @GetMapping("/User_Home")
+        public String User_Home() {
+            return "User_Home";
+    }
+
+    @GetMapping("/Cinema")
+    public String Cinema() {
+        return "User_Cinema";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        // Add your logout logic here if needed
+        return "redirect:/Login"; // Redirect to the login page
+    }
     @PostMapping("/Login")
     public String Login(HttpServletRequest request, HttpSession session) {
         String userName = request.getParameter("username");
@@ -51,6 +66,7 @@ public class UserController {
     public String Register() {
         return "Register";
     }
+    
 
     @PostMapping("/Register")
     public String register(HttpServletRequest request, Model model) {

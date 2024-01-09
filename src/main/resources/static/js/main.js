@@ -12,3 +12,13 @@ $(document).ready(function () {
       $("#selectedDate").val(selectedDate);
     });
   });
+  function activateButton(button) {
+    // Remove 'active' class from all buttons
+    var buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked button
+    button.classList.add('active');
+  }
