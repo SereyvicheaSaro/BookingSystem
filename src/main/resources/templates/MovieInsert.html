@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movie.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7 py-4 card rounded-4 shadow-lg">
+                <h2 class="text-center">Insertion</h2>
+                <form th:action="@{/TP06/User_Insert}" method="post" th:object="${user}" class="d-flex flex-column">
+                    <div class="d-flex justify-content-around">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="title" th:name="title" placeholder="Title">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="password" th:name="password" placeholder="Duration">
+                    </div>
+                    
+                    <div class="d-flex justify-content-around">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="title" th:name="title" placeholder="Release Date">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="password" th:name="password" placeholder="Hall">
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="title" th:name="title" placeholder="Genre">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="password" th:name="password" placeholder="Extension">
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="title" th:name="title" placeholder="Showing Date">
+                        <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="password" th:name="password" placeholder="Showing Time">
+                    </div>
+
+                    <div class="d-flex justify-content-around" style="height: 150px;">
+                        <div class="d-flex flex-column justify-content-between">
+                            <input type="text" autocomplete="" required class="form-control mt-4" style="width: 300px;" id="password" th:name="password" placeholder="Release">
+                            <div class="mb-3 d-flex justify-content-between">
+                                <a th:href="@{/Movie_List}" class="btn btn-dark btn-block btn-sm mt-4 btn-back px-3 py-1">Back</a>
+                                <button type="submit" class="btn btn-dark btn-block btn-sm mt-4 px-3 py-1">Insert</button>
+                            </div>
+                        </div>
+                        <div>
+                            <textarea autocomplete="" required class="form-control mt-4 h-75" style="width: 300px;" id="description" th:name="description" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="alert alert-success text-center mt-3" th:if="${SuccessMessage}">
+                    <strong th:text="${SuccessMessage}"></strong>
+                </div>                                                               
+                
+                <div class="alert alert-danger text-center mt-3" th:if="${RegisterError}">
+                    <strong th:text="${RegisterError}"></strong>
+                </div>                        
+            </div>
+        </div>
+    </div>
+</body>
+</html>
