@@ -24,14 +24,13 @@ public class UserController {
         return "Login";
     }
 
-    @GetMapping("/User_Home")
-        public String User_Home() {
-            return "User_Home";
-    }
-
     @GetMapping("/Cinema")
     public String Cinema() {
         return "User_Cinema";
+    }
+    @GetMapping("/FoodAndBerverage")
+    public String FNB() {
+        return "FNB";
     }
 
     @GetMapping("/logout")
@@ -68,7 +67,6 @@ public class UserController {
         return "Register";
     }
     
-
     @PostMapping("/Register")
     public String register(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
