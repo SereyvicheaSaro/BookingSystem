@@ -27,11 +27,26 @@
                 <div class="tab-pane fade show active register fade-in">
                     <div class="form px-4 pt-4">
                         <form th:action="@{/Register}" method="post">
-                            <input type="text" class="form-control" th:name="email" placeholder="Email Address" autocomplete="" required>
-                            <input type="text" class="form-control mt-4" th:name="tel" placeholder="Phone number" autocomplete="" required>
-                            <input type="text" class="form-control mt-4" th:name="username" placeholder="Username" autocomplete="" required>
-                            <input type="text" class="form-control mt-4" th:name="password" placeholder="Password" autocomplete="" required>
-                            <input type="text" class="form-control mt-4" th:name="confirmpassword" placeholder="Confirm Password" autocomplete="" required>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" th:name="email" placeholder="Email Address" autocomplete="" required>
+                                <label for="email">Email Address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control mt-4" th:name="tel" placeholder="Phone number" autocomplete="" required>
+                                <label for="tel">Phone number</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control mt-4" th:name="username" placeholder="Username" autocomplete="" required>
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control mt-4" th:name="password" placeholder="Password" autocomplete="" required>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control mt-4" th:name="confirmpassword" placeholder="Confirm Password" autocomplete="" required>
+                                <label for="confirmpassword">Confirm password</label>
+                            </div>
                             <button class="btn btn-dark btn-block mt-4" type="submit">Register</button>
                         </form>
                     </div>

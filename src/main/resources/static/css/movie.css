@@ -5,7 +5,8 @@ h2{
 }
 
 .btn{
-    font: 20px Jura;
+    font-size: 20px;
+    font-family: 'Jura';
     text-transform: uppercase;
     background-color: #000;
 }

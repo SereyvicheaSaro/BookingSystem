@@ -12,35 +12,35 @@ import booking.project.repository.UserRepository;
 @Service
 public class UserService {
     @Autowired
-   private UserRepository userRepo;
+    private UserRepository userRepo;
 
-   public User authenticateUser(String userName, String password) {
-      User user = userRepo.findByUserName(userName);
+    public User authenticateUser(String userName, String password) {
+        User user = userRepo.findByUserName(userName);
 
-      if (user != null && user.getPassword().equals(password)) {
-          return user;
-      }
+        if (user != null && user.getPassword().equals(password)) {
+            return user;
+        }
 
-      return null;
-   }
+        return null;
+    }
 
-   public boolean alreadyExists(String username) {
-      return userRepo.findByUserName(username) != null;
-   }
+    public boolean alreadyExists(String username) {
+        return userRepo.findByUserName(username) != null;
+    }
 
-   public Optional<User> getUserById(Long id) {
-      return userRepo.findById(id);
-   } 
-  
-   public void save(User user) {
-      userRepo.save(user);
-   }
+    public Optional<User> getUserById(Long id) {
+        return userRepo.findById(id);
+    } 
+    
+    public void save(User user) {
+        userRepo.save(user);
+    }
 
-   public List<User> getAllUsers(){
-      return userRepo.findAll();
-   }
+    public List<User> getAllUsers(){
+        return userRepo.findAll();
+    }
 
-   public void deleteUserById(Long id) {
-      userRepo.deleteById(id);
-   }
+    public void deleteUserById(Long id) {
+        userRepo.deleteById(id);
+    }
 }
