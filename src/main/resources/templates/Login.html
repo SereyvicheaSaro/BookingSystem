@@ -40,8 +40,14 @@
                 <div class="tab-pane fade show active login fade-in">
                     <div class="form px-4 pt-4">
                         <form th:action="@{/Login}" method="post">
-                            <input type="text" th:name="username" class="form-control rounded-2" placeholder="Username" autocomplete="">
-                            <input type="password" th:name="password" class="form-control rounded-2 mt-4" placeholder="Password" autocomplete="">
+                            <div class="form-floating mb-3">
+                                <input type="text" th:name="username" class="form-control rounded-2" placeholder="Username" autocomplete="">
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" th:name="password" class="form-control rounded-2 mt-4" placeholder="Password" autocomplete="">
+                                <label for="password">Password</label>
+                            </div>
                             <button class="btn btn-dark btn-block btn-sm mt-4" type="submit">Login</button>
                         </form>
                     </div>

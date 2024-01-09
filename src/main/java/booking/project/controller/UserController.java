@@ -24,13 +24,14 @@ public class UserController {
         return "Login";
     }
 
+    @GetMapping("/User_Home")
+        public String User_Home() {
+            return "User_Home";
+    }
+
     @GetMapping("/Cinema")
     public String Cinema() {
         return "User_Cinema";
-    }
-    @GetMapping("/FoodAndBerverage")
-    public String FNB() {
-        return "FNB";
     }
 
     @GetMapping("/logout")
@@ -38,6 +39,7 @@ public class UserController {
         // Add your logout logic here if needed
         return "redirect:/Login"; // Redirect to the login page
     }
+
     @PostMapping("/Login")
     public String Login(HttpServletRequest request, HttpSession session) {
         String userName = request.getParameter("username");
@@ -67,6 +69,7 @@ public class UserController {
         return "Register";
     }
     
+
     @PostMapping("/Register")
     public String register(HttpServletRequest request, Model model) {
         String email = request.getParameter("email");
@@ -104,43 +107,9 @@ public class UserController {
         return "Register";
     }
 
-    @GetMapping("/Admin_Home")
-    public String Admin_Home(HttpSession session) {
-        // Check if the user is authenticated
-        if (session.getAttribute("authenticatedUser") == null) {
-            // Redirect to the login page if not authenticated
-            return "redirect:/LogIn";
-        }
-
-        // Check the role of the authenticated user
-        User authenticatedUser = (User) session.getAttribute("authenticatedUser");
-        if (!"admin".equals(authenticatedUser.getRole())) {
-            // Redirect to the appropriate home page based on the user's role
-            if ("user".equals(authenticatedUser.getRole())) {
-                return "redirect:/LogIn";
-            }
-        }
-
-        return "AdminHome";
+    @GetMapping("/Cinema")
+    public String Cinema() {
+        return "User_Cinema";
     }
-
-    @GetMapping("/User_Home")
-    public String User_Home(HttpSession session, Model model) {
-        // Check if the user is authenticated
-        User authenticatedUser = (User) session.getAttribute("authenticatedUser");
-        if (authenticatedUser == null) {
-            // Redirect to the login page if not authenticated
-            return "redirect:/LogIn";
-        }
-    
-        return "User_Home";
-    }    
-
-    @GetMapping("/Movie_Insert")
-    public String Movie_Insert(HttpSession session) {
-
-        return "MovieInsert";
-    }
-    
 }
 
