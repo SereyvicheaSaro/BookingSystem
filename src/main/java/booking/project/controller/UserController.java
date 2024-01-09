@@ -11,6 +11,7 @@ import booking.project.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+
 @Controller
 public class UserController {
 
@@ -104,5 +105,44 @@ public class UserController {
         // Redirect to the login page after successful registration
         return "Register";
     }
+
+    @GetMapping("/Admin_Home")
+    public String Admin_Home(HttpSession session) {
+        // Check if the user is authenticated
+        if (session.getAttribute("authenticatedUser") == null) {
+            // Redirect to the login page if not authenticated
+            return "redirect:/LogIn";
+        }
+
+        // Check the role of the authenticated user
+        User authenticatedUser = (User) session.getAttribute("authenticatedUser");
+        if (!"admin".equals(authenticatedUser.getRole())) {
+            // Redirect to the appropriate home page based on the user's role
+            if ("user".equals(authenticatedUser.getRole())) {
+                return "redirect:/LogIn";
+            }
+        }
+
+        return "AdminHome";
+    }
+
+    @GetMapping("/User_Home")
+    public String User_Home(HttpSession session, Model model) {
+        // Check if the user is authenticated
+        User authenticatedUser = (User) session.getAttribute("authenticatedUser");
+        if (authenticatedUser == null) {
+            // Redirect to the login page if not authenticated
+            return "redirect:/LogIn";
+        }
+    
+        return "User_Home";
+    }    
+
+    @GetMapping("/Movie_Insert")
+    public String Movie_Insert(HttpSession session) {
+
+        return "MovieInsert";
+    }
+    
 }
 
