@@ -24,6 +24,10 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
     
+    @GetMapping("/Ticket")
+    public String Ticket(){
+        return "UserTicket";
+    }
     @GetMapping("/Admin_Home")
     public String Admin_Home(HttpSession session, Model model) {
         // Check if the user is authenticated
@@ -245,8 +249,6 @@ public class MovieController {
 
     @PostMapping("/Movie_Delete")
     public String deleteMovie(@ModelAttribute("movie") Movie movie, Model model) {
-        // Perform validation or other necessary checks
-
         // Get the ID of the movie to be deleted
         Long movieId = movie.getId();
 
