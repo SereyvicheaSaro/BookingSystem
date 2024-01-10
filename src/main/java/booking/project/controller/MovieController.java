@@ -65,7 +65,7 @@ public class MovieController {
     }    
 
     @GetMapping("/Movie_List")
-    public String User_List(Model model, HttpSession session) {
+    public String Movie_List(Model model, HttpSession session) {
         // Check if the user is authenticated
         if (session.getAttribute("authenticatedUser") == null) {
             // Redirect to the login page if not authenticated
@@ -92,7 +92,7 @@ public class MovieController {
     }
 
     @GetMapping("/Movie_Insert")
-    public String Product_Insert(HttpSession session, Model model) {
+    public String Movie_Insert(HttpSession session, Model model) {
         // Check if the user is authenticated
         if (session.getAttribute("authenticatedUser") == null) {
             // Redirect to the login page if not authenticated
@@ -115,7 +115,7 @@ public class MovieController {
     }
 
     @PostMapping("/Movie_Insert")
-    public String User_Insert(@ModelAttribute("movie") Movie newMovie, HttpServletRequest request, Model model) {
+    public String Movie_Insert(@ModelAttribute("movie") Movie newMovie, HttpServletRequest request, Model model) {
         String title = request.getParameter("title");
         String duration = request.getParameter("duration");
         String releaseDate = request.getParameter("releaseDate");
@@ -175,9 +175,6 @@ public class MovieController {
 
     @PostMapping("/Movie_Update")
     public String updateMovie(@ModelAttribute("movie") Movie updatedMovie, Model model) {
-        // Perform validation or other necessary checks
-
-        System.out.println("Updated Movie: " + updatedMovie);
     
         // Get the ID of the movie to be updated
         Long movieId = updatedMovie.getId();

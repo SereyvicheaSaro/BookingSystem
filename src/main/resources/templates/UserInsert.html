@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/movie.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7 py-4 card rounded-4 shadow-lg">
+                <h2 class="text-center mb-4">Insertion</h2>
+                <form th:action="@{/User_Insert}" method="post" th:object="${user}" class="d-flex flex-column">
+                    <div class="d-flex justify-content-around">
+                        <div class="form-floating mb-3">
+                            <input type="text" autocomplete="" required class="form-control" style="width: 300px;" id="userName" th:name="userName" placeholder="Username">
+                            <label for="userName">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" autocomplete="" required class="form-control" style="width: 300px;" id="password" th:name="password" placeholder="Password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-around">
+                        <div class="form-floating mb-3">
+                            <select type="text" autocomplete="" required class="form-control" style="width: 300px;" id="role" th:name="role" placeholder="Role">
+                                <option value="user">user</option>
+                                <option value="admin">admin</option>
+                            </select>
+                            <label for="role">Role</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" autocomplete="" required class="form-control" style="width: 300px;" id="email" th:name="email" placeholder="Email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <div class="d-flex flex-column justify-content-between">
+                            <div class="d-flex justify-content-between" style="width: 300px;">
+                                <a th:href="@{/User_List}" class="btn btn-dark btn-block btn-sm mt-4 btn-back px-3 py-1">Back</a>
+                                <button type="submit" class="btn btn-dark btn-block btn-sm mt-4 px-3 py-1">Insert</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-floating mb-3">
+                                <input autocomplete="" required class="form-control" style="width: 300px;" id="tel" th:name="tel" placeholder="Phone Number"></input>
+                                <label for="tel">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-success text-center mt-3 w-75" th:if="${SuccessMessage}">
+                        <strong th:text="${SuccessMessage}"></strong>
+                    </div>
+                    <div class="alert alert-danger text-center mt-3" th:if="${RegisterError}">
+                        <strong th:text="${RegisterError}"></strong>
+                    </div>                                                            
+                </div>             
+            </div>
+        </div>
+    </div>
+</body>
+</html>
