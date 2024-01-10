@@ -100,7 +100,7 @@ public class UserController {
     public String Cinema() {
         return "UserCinema";
     }
-    @GetMapping("/Food&Berverage")
+    @GetMapping("/Food&Beverage")
     public String FNB(){
         return "FNB";
     }
