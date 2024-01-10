@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/css/bootstrap.min.css}"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css}"
+    />
+    <script
+      th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js}"
+    ></script>
+    <script
+      th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"
+    ></script>
+
+    <style>
+      body{
+                overflow-x: hidden;
+                background-image: url('images/f&b_bg.jpg'); 
+                background-size: cover; 
+                background-repeat: no-repeat; 
+                background-attachment: fixed;
+        }
+      .custom-navbar {
+        background-color: rgba(0, 0, 0, 0.5); /* Black with 50% transparency */
+        width: 100%;
+        height: 100px;
+      }
+
+      /* Center the content vertically in the navigation bar */
+      .navbar-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 20px; /* Add some padding to the sides */
+      }
+
+      /* Styling for the back button and title */
+      .navbar-brand {
+        color: white; /* Text color */
+      }
+
+      .navbar-brand:hover {
+        color: #f8f9fa; /* Text color on hover */
+      }
+
+      /* Center the title */
+      .navbar-title {
+        text-align: center;
+        color: white; /* Text color */
+      }
+
+      /* Custom styling for the container below the navigation bar */
+      .custom-container {
+        width: 100%;
+        height: 500px;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Divide the container into 30% left and 70% right */
+      .custom-container-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        
+      }
+
+      .custom-container-right {
+        display: flex;
+        gap: 30px;
+        width: 75%;
+        
+      }
+    .custom-container-right ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        background-color: black; /* seagreen with 70% opacity */
+        width: 20%;
+        font-size: 20px;
+        border-radius: 10px;
+        color: white;
+        height: 350px;
+    }
+
+      .custom-container-right ul li{
+        margin: 10px;
+      }
+      .custom-container-right p{
+        padding: 20px;
+        background-color: black;
+        width: 80%;
+        color: white;
+        height: 280px;
+        border-radius: 10px;
+        font-size: 19px;
+        text-align: justify;
+      }
+
+      /* Style for the image in the left part */
+      .custom-image {
+        height: 100%;
+      }
+      .row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box1{
+        width: 150px;
+      }
+      .box1 .form-control{
+        background: transparent;
+        color: white;
+        border: none;
+        font-family: 'Inter';
+        font-size: 20px;
+      }
+      .box1 .btn{
+        
+        color: white;
+        border: 2px white solid ;
+      }
+      .box2{
+        width: 200px;
+        color: white;
+      }
+      .box3{
+        width: 200px;
+      }
+      .box3 .btn{
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar custom-navbar">
+      <div class="container-fluid navbar-content">
+        <a class="navbar-brand" th:href="@{/User_Home}">
+          <i class="uil uil-backspace"></i> Home
+        </a>
+        <div class="mx-auto navbar-title">
+          <h2 th:text="${pageTitle}"></h2>
+          <h1>Advengers Endgame</h1>
+        </div>
+      </div>
+    </nav>
+
+    <div class="custom-container">
+      <div class="custom-container-left">
+        <!-- Display an image in the left part -->
+        <img class="custom-image" src="/images/endgame.jpg" alt="Image" />
+      </div>
+      <div class="custom-container-right">
+        <!-- Embed a YouTube video in the right part -->
+        <ul style="list-style-type: none; ">
+          <li>Duration: 2h16min</li>
+          <li>Genre: Action</li>
+          <li>Hall: 01</li>
+          <li>Seats: 59</li>
+          <li>Time: 10:00</li>
+          <li>Type: 4D</li>
+        </ul>
+        <p>
+          <span style="font: bold 30px'Inter';">Description</span> <br> <br>
+          "The Amazing Spider-Man" swings into action with Andrew
+          Garfield embodying the iconic Peter Parker. Directed by Marc Webb, the
+          film explores Peter's origin story, blending relatable vulnerability
+          with Spider-Man's agile prowess. The dynamic chemistry with Emma
+          Stone's Gwen Stacy adds depth to the narrative. The visually stunning
+          action sequences showcase Spider-Man's acrobatic feats against the
+          formidable Lizard, portrayed by Rhys Ifans. Webb's modern touch
+          infuses the superhero genre with humor, emotion, and a fresh
+          perspective, making "The Amazing Spider-Man" a thrilling and engaging
+          addition to the franchise.
+        </p>
+        </div>
+    </div>
+    <div class="row mt-4 p-5">
+        <!-- First box: Button to increase and decrease the number -->
+        <div class="box1">
+            <div class="input-group" >
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-outline-secondary" onclick="decreaseNumber()">-</button>
+                </span>
+                <input type="text" class="form-control text-center" id="quantity" value="0" readonly />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-outline-secondary" onclick="increaseNumber()">+</button>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Second box: Display the price -->
+        <div class="box2">
+            <h4 class="text-center">Price: $<span id="price">0.00</span></h4>
+        </div>
+        
+        <!-- Third box: Booking button -->
+        <div class="box3">
+            <button type="button" class="btn btn-dark btn-lg btn-block" onclick="bookTicket()">Book Now</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

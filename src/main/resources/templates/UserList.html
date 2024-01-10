@@ -15,11 +15,16 @@
     <style>
         body{
             overflow-x: hidden;
-            background-image: url('images/Home_bg.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
+            background-image: url('images/Tickets.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
             background-size: cover; /* This property ensures that the background image covers the entire body */
             background-repeat: no-repeat; /* Prevents the background image from repeating */
             background-attachment: fixed;
             
+        }
+        header .text-right p{
+            font-size: 25px;
+            font-weight: 600;
+            font-family: 'Jura';
         }
         .card {
             display: flex;
@@ -88,7 +93,7 @@
                     <a th:href="@{/Admin_Home}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-estate"></i> Home</button></a>
                     <a th:href="@{/Movie_List}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-film"></i> Movie</button></a>
                     <button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-user"></i> User</button>
-                    <a th:href="@{/Food&Beverage}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button></a>
+                    <a th:href="@{/Food&Beverage}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Berverage</button></a>
                 </div>
                 
                 <div class="mt-3">

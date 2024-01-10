@@ -23,7 +23,11 @@ public class MovieController {
 
     @Autowired
     private MovieService movieService;
-
+    
+    @GetMapping("/Booking")
+    public String Booking(){
+        return "Booking";
+    }
     @GetMapping("/Admin_Home")
     public String Admin_Home(HttpSession session, Model model) {
         // Check if the user is authenticated

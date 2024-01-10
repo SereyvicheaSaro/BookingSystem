@@ -114,7 +114,12 @@
                 <!-- Middle - Four buttons and search bar -->
                 <div class="col-md-8 text-center">
                   <div class="d-flex flex-row align-items-center gap-4 justify-content-center  text-white">
-                    <a th:href="@{/User_Home}"><button class="btn text-white " onclick="activateButton(this)"> <i class="uil uil-estate"></i> Home</button></a>
+                    <a th:href="${session.authenticatedUser.role eq 'admin' ? '/Admin_Home' : '/User_Home'}">
+                      <button class="btn text-white" onclick="activateButton(this)">
+                        <i class="uil uil-estate"></i> Home
+                      </button>
+                    </a>
+                                        
                     <button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-ticket"></i> Ticket</button>
                     <a th:href="@{/Cinema}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-map-marker"></i> Cinema</button></a>
                     <a th:href="@{/FoodAndBerverage}"><button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button> </a> 

@@ -106,11 +106,11 @@ public class UserController {
     public String Cinema() {
         return "UserCinema";
     }
-    @GetMapping("/Food&Beverage")
+    @GetMapping("/FoodAndBeverage")
     public String FNB(){
         return "FNB";
     }
-
+    
     @GetMapping("/User_List")
     public String User_List(Model model, HttpSession session) {
         // Check if the user is authenticated
