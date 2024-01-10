@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import booking.project.entity.Movie;
-import booking.project.repository.MovieRepository;
+import booking.project.entity.Food;
+import booking.project.repository.FoodRepository;
 
 @Service
 public class FoodService {
     @Autowired
-    private MovieRepository movieRepo;
+    private FoodRepository foodRepo;
 
-    public List<Movie> getAllMovies(){
-        return movieRepo.findAll();
+    public List<Food> getAllFoods(){
+        return foodRepo.findAll();
     }
 }

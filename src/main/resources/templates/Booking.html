@@ -162,46 +162,37 @@
   <body>
     <nav class="navbar custom-navbar">
       <div class="container-fluid navbar-content">
-        <a class="navbar-brand" th:href="@{/User_Home}">
+        <a class="navbar-brand" th:if="${session.authenticatedUser.role == 'user'}" th:href="@{/User_Home}">
+          <i class="uil uil-backspace"></i> Home
+        </a>
+        <a class="navbar-brand" th:if="${session.authenticatedUser.role == 'admin'}" th:href="@{/Admin_Home}">
           <i class="uil uil-backspace"></i> Home
         </a>
         <div class="mx-auto navbar-title">
-          <h2 th:text="${pageTitle}"></h2>
-          <h1>Advengers Endgame</h1>
+          <h1><span th:text="${movie.title}"></span></h1>
         </div>
       </div>
     </nav>
 
     <div class="custom-container">
       <div class="custom-container-left">
-        <!-- Display an image in the left part -->
-        <img class="custom-image" src="/images/endgame.jpg" alt="Image" />
+          <!-- Display an image in the left part -->
+          <img class="custom-image" src="/images/endgame.jpg" alt="Image" />
       </div>
       <div class="custom-container-right">
-        <!-- Embed a YouTube video in the right part -->
-        <ul style="list-style-type: none; ">
-          <li>Duration: 2h16min</li>
-          <li>Genre: Action</li>
-          <li>Hall: 01</li>
-          <li>Seats: 59</li>
-          <li>Time: 10:00</li>
-          <li>Type: 4D</li>
-        </ul>
-        <p>
-          <span style="font: bold 30px'Inter';">Description</span> <br> <br>
-          "The Amazing Spider-Man" swings into action with Andrew
-          Garfield embodying the iconic Peter Parker. Directed by Marc Webb, the
-          film explores Peter's origin story, blending relatable vulnerability
-          with Spider-Man's agile prowess. The dynamic chemistry with Emma
-          Stone's Gwen Stacy adds depth to the narrative. The visually stunning
-          action sequences showcase Spider-Man's acrobatic feats against the
-          formidable Lizard, portrayed by Rhys Ifans. Webb's modern touch
-          infuses the superhero genre with humor, emotion, and a fresh
-          perspective, making "The Amazing Spider-Man" a thrilling and engaging
-          addition to the franchise.
-        </p>
+          <!-- Embed a YouTube video in the right part -->
+          <ul style="list-style-type: none;">
+              <li>Duration: <span th:text="${movie.duration}"></span></li>
+              <li>Genre: <span th:text="${movie.genre}"></span></li>
+              <li>Hall: <span th:text="${movie.hall}"></span></li>
+              <li>Time: <span th:text="${movie.showingTime}"></span></li>
+              <li>Type: <span th:text="${movie.type}"></span></li>
+          </ul>
+          <p class="h-75" th:if="${movie != null}"><span th:text="${movie.description}"></span></p>
         </div>
     </div>
+  
+    
     <div class="row mt-4 p-5">
         <!-- First box: Button to increase and decrease the number -->
         <div class="box1">

@@ -24,10 +24,6 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
     
-    @GetMapping("/Booking")
-    public String Booking(){
-        return "Booking";
-    }
     @GetMapping("/Admin_Home")
     public String Admin_Home(HttpSession session, Model model) {
         // Check if the user is authenticated
@@ -266,4 +262,21 @@ public class MovieController {
         // Handle the case where the movie ID is null
         return "redirect:/Movie_List"; // Redirect to the movie list page, for example
     }
+
+    @GetMapping("/Booking")
+    public String showBooking(@RequestParam(name = "movieId", required = false) Long movieId, Model model, HttpSession session) {
+        // Check if the user is authenticated
+        if (session.getAttribute("authenticatedUser") == null) {
+            // Redirect to the login page if not authenticated
+            return "redirect:/Login";
+        }
+        
+        Optional<Movie> optionalMovie = movieService.getMovieById(movieId);
+        
+        // Check if the movie exists, otherwise throw an exception
+        Movie movie = optionalMovie.orElseThrow(() -> new NoSuchElementException("Movie not found for id: " + movieId));
+        
+        model.addAttribute("movie", movie);
+        return "Booking";
+    }    
 }

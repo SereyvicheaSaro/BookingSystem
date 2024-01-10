@@ -167,28 +167,14 @@
       </header>
         <div class="container mt-4 d-flex justify-content-center align-items-center">
           <div class="row">
-              <!-- Use Thymeleaf iteration to generate cards -->
-              <th:block th:each="cardNum : ${#numbers.sequence(1, 8)}">
-                  <div class="col-md-3 mb-4">     
-                    <div onmouseover="showBooking(this)" onmouseout="hideBooking(this)">
-                      <div class="card" style="width: 300px;">
-                          <img th:src="@{/images/fanta.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
-                          <div class="card-body d-flex flex-column">
-                            <h5 class="card-title m-auto" 
-                                th:text="${cardNum == 1 ? 'Fanta' : 
-                                          (cardNum == 2 ? 'Coke' : 
-                                          (cardNum == 3 ? 'Sprite' : 
-                                          (cardNum == 4 ? 'Sting' : 
-                                          (cardNum == 5 ? 'Noodle' :
-                                          (cardNum == 6 ? 'Popcorn' : 
-                                          (cardNum == 7 ? 'Hotdog' : 
-                                          (cardNum == 8 ? 'Spaghetti' : 
-                                          'Movie ' + cardNum)))))))}"></h5>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-              </th:block>
+            <th:block th:each="food, iterStat : ${foodList}" th:if="${iterStat.index lt 8}">
+              <div class="col-md-3 mb-4">
+                <div class="card" style="width: 300px;">
+                    <img th:src="@{/images/fanta.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
+                    <h4 class="card-title m-auto text-light bg-dark d-flex justify-content-center align-items-center" th:text="${food.title}" style="width: 300px; height: 80px;"></h4>
+                </div>
+              </div>
+          </th:block>
           </div>
       </div>
 
