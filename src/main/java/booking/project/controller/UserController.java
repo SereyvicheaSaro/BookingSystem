@@ -254,4 +254,50 @@ public class UserController {
         // You can redirect or show an error message as needed
         return "redirect:/User_List";
     }    
+
+    @GetMapping("/User_Delete")
+    public String showDeleteForm(@RequestParam("userId") Long userId, Model model, HttpSession session) {
+        // Check if the user is authenticated
+        if (session.getAttribute("authenticatedUser") == null) {
+            // Redirect to the login page if not authenticated
+            return "redirect:/Login";
+        }
+
+        // Check the role of the authenticated user
+        User authenticatedUser = (User) session.getAttribute("authenticatedUser");
+        if (!"admin".equals(authenticatedUser.getRole())) {
+            // Redirect to the appropriate home page based on the user's role
+            if ("user".equals(authenticatedUser.getRole())) {
+                return "redirect:/User_Home";
+            }
+        }
+        
+        Optional<User> optionalUser = Uservice.getUserById(userId);
+        
+        // Check if the movie exists, otherwise throw an exception
+        User user = optionalUser.orElseThrow(() -> new NoSuchElementException("User not found for id: " + userId));
+        
+        model.addAttribute("user", user);
+        return "UserDelete";
+    }
+
+    @PostMapping("/User_Delete")
+    public String deleteUser(@ModelAttribute("user") User user, Model model) {
+        // Perform validation or other necessary checks
+
+        // Get the ID of the movie to be deleted
+        Long userId = user.getId();
+
+        // Check if the movie ID is not null
+        if (userId != null) {
+            // Delete the movie from the database
+            Uservice.deleteUserById(userId);
+
+            // Redirect to the movie list page or another appropriate page
+            return "redirect:/User_List";
+        }
+
+        // Handle the case where the movie ID is null
+        return "redirect:/User_List"; // Redirect to the movie list page, for example
+    }
 }

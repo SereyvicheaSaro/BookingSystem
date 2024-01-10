@@ -23,10 +23,6 @@ $(document).ready(function () {
     button.classList.add('active');
   }
 
-/////////////////////////////////////////////
-            // FOR BOOKING //
-/////////////////////////////////////////////
-
 // Function to increase the quantity
 function increaseNumber() {
     var quantity = document.getElementById("quantity");
