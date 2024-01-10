@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Ticket</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -15,9 +15,9 @@
     <style>
       body{
         overflow-x: hidden;
-        background-image: url('images/Home_bg.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
-        background-size: cover; /* This property ensures that the background image covers the entire body */
-        background-repeat: no-repeat; /* Prevents the background image from repeating */
+        background-image: url('images/Home_bg.jpg'); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
         background-attachment: fixed;
         
       }
@@ -63,8 +63,73 @@
           color: white;
           border-radius: 0 0 10px 10px;
         }
+        .ticket{
+          margin: auto;
+          border-radius: 10px;
+          width: 70%;
+          height: 300px;
+          display: flex;
+        }
+        .ticket .row1 img{
+          height: 100%;
+        }
+        .ticket .row2{
+          color: black;
+          text-align: center;
+          width: 40%;
+          border: 1px solid black;
+          background-color: rgba(128, 128, 128, 0.9);
+        }
+        .ticket .row2 .col1{
+          text-align: center;
+        }
+        .ticket .row2 .col2{
+          font-weight: bold;
+          width: 33%;
+          display: flex;
+          font-family: Inika;
+          font-size: 20px;
+        }
+        .ticket .row2 .col2 .row{
+          height: 30px;
+          padding-top: 10px;
+          margin: 5px 0;
+        }
+        .ticket .row2 .col3{
+          width: 33.4%;
+          display: flex;
+          font-family: Inika;
+          font-size: 20px;
+        }
         
-        
+        .ticket .row2 .col3 .row{
+          border: 1px solid black;
+          padding-top: 12px;
+          margin: 5px 0;
+        }
+        .ticket .row3{
+          text-align: center;
+          padding: 30px;
+          background-color: rgba(128, 128, 128, 0.9);
+          border: 1px solid black;
+        }
+        .ticket .row4{
+          background-color: rgba(255, 255, 255, 0.9);
+          width: 200px;
+          border-radius: 0 10px 10px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 40px;
+        }
+        .ticket .row4 i{
+          font-size: 70px;
+        }
+        .ticket .row4 p{
+          padding-top: 20px;
+          padding-left: 10px;
+          font-family: Offside;
+        }
     </style>
   </head>
   <body class="bg-dark">
@@ -81,10 +146,14 @@
           <!-- Middle - Four buttons and search bar -->
           <div class="col-md-8 text-center">
             <div class="d-flex flex-row align-items-center gap-4 justify-content-center  text-white">
-              <button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-estate"></i> Home</button>
-              <a th:href="@{/Ticket}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-ticket"></i> Ticket</button></a>
+                <a th:href="${session.authenticatedUser.role eq 'admin' ? '/Admin_Home' : '/User_Home'}">
+                    <button class="btn text-white" onclick="activateButton(this)">
+                      <i class="uil uil-estate"></i> Home
+                    </button>
+                </a>
+              <button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-ticket"></i> Ticket</button>
               <a th:href="@{/Cinema}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-map-marker"></i> Cinema</button></a>
-              <a th:href="@{/Food&Beverage}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button></a>
+              <a th:href="@{/FoodAndBeverage}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button></a>
             </div>
             
             <div class="mt-3">
@@ -101,52 +170,37 @@
       </div>
     </header>
 
-    <div class="container01 mt-3">
-      <div class="row">
-        <!-- Date section -->
-        <div class="col-md-12 text-center">
-          <div class="btn-group gap-5" role="group" aria-label="Date Selection">
-            <!-- Use Thymeleaf iteration to generate dates -->
-            <th:block th:each="dayNum : ${#numbers.sequence(1, 7)}">
-              <!-- Generate buttons for each date with width 160px -->
-              <button
-                type="button"
-                class="btn round-2"
-                style="width: 160px"
-              >
-                <!-- Format the date as 'MMM d' (e.g., Jan 1, Jan 2, etc.) -->
-                <th:block
-                  th:with="date=${T(java.time.LocalDate).of(2024, 1, dayNum)}"
-                >
-                  <th:block
-                    th:text="${#temporals.format(date, 'MMM d')}"
-                  ></th:block>
-                </th:block>
-              </button>
-            </th:block>
+    <div class="ticket">
+      <div class="row1">
+        <img src="images/endgame.jpg" alt="">
+      </div>
+      <div class="row2">
+          <div class="col1" style="padding-top: 15px;">
+            <span style="font-family: Nova Square;font-weight: 400;font-size: 32px; ">Lychea Cinema</span> <br>
+            <span style="font-family: Inter;font-weight: 300;font-size: 25px;">The Amazing Spider-Man - 4D</span> <br>
+            7 Jan 2024 - 10:00
           </div>
-        </div>
+          <div class="col2" style="padding-top: 30px;">
+            <div class="row"><p>Price</p></div>
+            <div class="row"><p>Duration</p></div>
+            <div class="row"><p>Hall</p></div>
+          </div>
+          <div class="col3">
+            <div class="row"><p>7.5 USD</p></div>
+            <div class="row"><p>1h52mn</p></div>
+            <div class="row"><p>04</p></div>
+          </div>
+      </div>
+      <div class="row3">
+        <p>No: TASM01</p>
+        <img src="images/QRCode.svg" alt="">
+      </div>
+      <div class="row4">
+        <i class="uil uil-ticket"></i>
+        <p>x 1</p>
       </div>
     </div>
-
-    <div class="container mt-4 d-flex justify-content-center align-items-center">
-      <div class="row">
-          <!-- Use Thymeleaf iteration to generate cards -->
-          <th:block th:each="movie, iterStat : ${movieList}" th:if="${iterStat.index lt 8}">
-              <div class="col-md-3 mb-4">
-                  <a th:href="@{/Booking}" style="text-decoration: none;">
-                      <div class="card" style="width: 300px;">
-                          <img th:src="@{/images/endgame.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
-                          <div class="card-body text-center">
-                              <p class="m-auto lead" th:text="${movie.releaseDate}"></p>
-                              <h4 class="card-title m-auto" th:text="${movie.title}"></h4>
-                          </div>
-                      </div>
-                  </a>
-              </div>
-          </th:block>
-      </div>
-  </div>  
+  
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
