@@ -23,55 +23,36 @@ $(document).ready(function () {
     button.classList.add('active');
   }
 
+/////////////////////////////////////////////
+            // FOR BOOKING //
+/////////////////////////////////////////////
 
-    var count = 0;
+// Function to increase the quantity
+function increaseNumber() {
+    var quantity = document.getElementById("quantity");
+    quantity.value = parseInt(quantity.value) + 1;
+    updatePrice();
+}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var addBtn = document.getElementById('addBtn');
-        var subtractBtn = document.getElementById('subtractBtn');
-
-        addBtn.addEventListener('click', increaseCount);
-        subtractBtn.addEventListener('click', decreaseCount);
-    });
-
-    function showBooking(element) {
-        var bookingContainer = element.querySelector('.booking-container');
-        bookingContainer.style.display = 'flex';
+// Function to decrease the quantity
+function decreaseNumber() {
+    var quantity = document.getElementById("quantity");
+    if (parseInt(quantity.value) > 0) {
+        quantity.value = parseInt(quantity.value) - 1;
+        updatePrice();
     }
+}
 
-    function hideBooking(element) {
-        var bookingContainer = element.querySelector('.booking-container');
-        bookingContainer.style.display = 'none';
-    }
+// Function to update the price based on quantity
+function updatePrice() {
+    var quantity = document.getElementById("quantity").value;
+    var price = 7.50; // Set your price per ticket here
+    document.getElementById("price").innerText = (quantity * price).toFixed(2);
+}
 
-    function updateQuantity() {
-        var input = document.getElementById('quantityInput');
-        count = parseInt(input.value) || 1;
-        input.value = count;
-    }
-
-    function increaseCount() {
-        count++;
-        updateQuantity();
-    }
-
-    function decreaseCount() {
-        if (count > 1) {
-            count--;
-            updateQuantity();
-        }
-    }
-
-    var quantityInput = document.getElementById("quantityInput");
-
-    function increaseCount() {
-        var currentValue = parseInt(quantityInput.value, 10);
-        quantityInput.value = currentValue + 1;
-    }
-
-    function decreaseCount() {
-        var currentValue = parseInt(quantityInput.value, 10);
-        if (currentValue > 0) {
-            quantityInput.value = currentValue - 1;
-        }
-    }
+// Function to handle booking button click
+function bookTicket() {
+    var quantity = document.getElementById("quantity").value;
+    var price = document.getElementById("price").innerText;
+    alert("Booking " + quantity + " ticket(s) for a total price of $" + price);
+}
