@@ -89,7 +89,7 @@
 
           <!-- Right side - Logo -->
           <div class="col-md-2 text-right">
-            <p>@Username</p>
+            <p th:text="${session.authenticatedUser.userName}"> </p>
             <a th:href="@{/logout}"><button class="btn bg-white">Logout</button></a>
           </div>
         </div>

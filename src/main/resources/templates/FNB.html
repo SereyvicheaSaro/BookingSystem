@@ -101,7 +101,7 @@
         </style>
     </head>
     <body>
-        <header class=" text-white" style="position: sticky; top: 0; z-index: 1000; background-color: black;" >
+        <header th:if="${session.authenticatedUser.role == 'user'}" class=" text-white" style="position: sticky; top: 0; z-index: 1000; background-color: black;" >
             <div class="pr-1 pl-5" >
               <div class="row align-items-center justify-contents-end" style=" width: 100%;">
       
@@ -117,7 +117,7 @@
                     <a th:href="@{/User_Home}"><button class="btn text-white " onclick="activateButton(this)"> <i class="uil uil-estate"></i> Home</button></a>
                     <button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-ticket"></i> Ticket</button>
                     <a th:href="@{/Cinema}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-map-marker"></i> Cinema</button></a>
-                    <a th:href="@{/FoodAndBerverage}"><button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Berverage</button> </a> 
+                    <a th:href="@{/FoodAndBerverage}"><button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button> </a> 
                   </div>
                   
                   <div class="mt-3">
@@ -127,39 +127,52 @@
       
                 <!-- Right side - Logo -->
                 <div class="col-md-2 text-right">
-                  <p th:text="${session.authenticatedUser.userName}"> </p>
+                  <p th:text="${session.authenticatedUser.userName}"></p>
                   <a th:href="@{/logout}"><button class="btn bg-white">Logout</button></a>
                 </div>
               </div>
             </div>
         </header>
+        <header th:if="${session.authenticatedUser.role == 'admin'}" class=" text-white" style="position: sticky; top: 0; z-index: 1000; background-color: black;" >
+          <div class="pr-1 pl-5" >
+            <div class="row align-items-center justify-contents-end" style=" width: 100%;">
+    
+              <!-- Left side - Logout button -->
+              <div class="col-md-2 d-flex align-items-center gap-2" style="font-size: 30px; font-family: Square;  text-align: center; line-height: normal; font-weight: bold;">
+                <img th:src="@{/images/film.svg}" alt="Logo" style="width: 60px" class=" d-flex align-items-center"/>
+                <p >Lychea <br> Cinema</p>
+            </div>
+            
+              <!-- Middle - Four buttons and search bar -->
+              <div class="col-md-8 text-center">
+                <div class="d-flex flex-row align-items-center gap-4 justify-content-center  text-white">
+                  <a th:href="@{/Admin_Home}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-estate"></i> Home</button></a>
+                  <a th:href="@{/Movie_List}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-film"></i> Movie</button></a>
+                  <a th:href="@{/User_List}"><button class="btn text-white" onclick="activateButton(this)"> <i class="uil uil-user"></i> User</button></a>
+                  <button class="btn text-white active" onclick="activateButton(this)"> <i class="uil uil-utensils-alt"></i> Food and Beverage</button>
+                </div>
+                
+                <div class="mt-3">
+                  <input type="text" class="form-control mb-3 m-auto rounded-4 p-3" style="width: 600px; height: 43px;" placeholder="Search movies..." />
+                </div>
+              </div>
+    
+              <!-- Right side - Logo -->
+              <div class="col-md-2 text-right">
+                <p th:text="${session.authenticatedUser.userName}"></p>
+                <a th:href="@{/logout}"><button class="btn bg-white">Logout</button></a>
+              </div>
+            </div>
+          </div>
+      </header>
         <div class="container mt-4 d-flex justify-content-center align-items-center">
           <div class="row">
               <!-- Use Thymeleaf iteration to generate cards -->
               <th:block th:each="cardNum : ${#numbers.sequence(1, 8)}">
                   <div class="col-md-3 mb-4">     
-                    <div onmouseover="showBooking(this)" onmouseout="hideBooking(this)">
-                      <div class="card" style="width: 300px;">
-                          <img th:src="@{/images/fanta.jpg}" class="card-img-top" alt="Card Image" style="width: 300px; height: 424px;">
-                          <div class="card-body d-flex flex-column">
-                            <h5 class="card-title m-auto" 
-                                th:text="${cardNum == 1 ? 'Fanta' : 
-                                          (cardNum == 2 ? 'Coke' : 
-                                          (cardNum == 3 ? 'Sprite' : 
-                                          (cardNum == 4 ? 'Sting' : 
-                                          (cardNum == 5 ? 'Noodle' :
-                                          (cardNum == 6 ? 'Popcorn' : 
-                                          (cardNum == 7 ? 'Hotdog' : 
-                                          (cardNum == 8 ? 'Spaghetti' : 
-                                          'Movie ' + cardNum)))))))}"></h5>
-                              <div class="booking-container" id="bookingContainer">
-                                  <p class="text-white pt-3">Booking</p>
-                                  <button class="booking-btn p-2" onclick="decreaseCount()">-</button>
-                                  <input type="text" id="quantityInput" value="0">
-                                  <button class="booking-btn p-2" onclick="increaseCount()">+</button>
-                              </div>
-                          </div>
-                      </div>
+                    <div class="card-body text-center">
+                      <p class="m-auto lead" th:text="${movie.releaseDate}"></p>
+                      <h4 class="card-title m-auto" th:text="${food.name}"></h4>
                     </div>
                   </div>
               </th:block>
