@@ -15,9 +15,9 @@
     <style>
         body{
             overflow-x: hidden;
-            background-image: url('images/Tickets.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image file */
-            background-size: cover; /* This property ensures that the background image covers the entire body */
-            background-repeat: no-repeat; /* Prevents the background image from repeating */
+            background-image: url('images/Tickets.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             
         }
@@ -110,11 +110,8 @@
                 <!-- Date section -->
                 <div class="col-md-12 text-center">
                     <div class="btn-group gap-5" role="group" aria-label="Date Selection">
-                        <!-- Use Thymeleaf iteration to generate dates -->
                         <th:block th:each="dayNum : ${#numbers.sequence(1, 7)}">
-                            <!-- Generate buttons for each date with width 160px -->
                             <button type="button" class="btn round-2" style="width: 160px">
-                                <!-- Format the date as 'MMM d' (e.g., Jan 1, Jan 2, etc.) -->
                                 <th:block th:with="date=${T(java.time.LocalDate).of(2024, 1, dayNum)}" >
                                 <th:block
                                     th:text="${#temporals.format(date, 'MMM d')}"

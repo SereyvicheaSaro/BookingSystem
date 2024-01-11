@@ -32,10 +32,11 @@ public class UserController {
 
     @GetMapping("/logout")
     public String logout() {
-        // Add your logout logic here if needed
         return "redirect:/Login"; // Redirect to the login page
     }
 
+
+    // login and authenticate  
     @PostMapping("/Login")
     public String Login(HttpServletRequest request, HttpSession session) {
         String userName = request.getParameter("username");
